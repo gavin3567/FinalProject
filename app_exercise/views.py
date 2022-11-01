@@ -6,3 +6,9 @@ def indexPageView(request) :
 
 def addingPageView(request) :
     return HttpResponse('Welcome to the adding page!')
+
+def listPageView(request):
+    return HttpResponse('Welcome to the listing page!')
+
+def aboutPageView(request):
+    return HttpResponse('Welcome to the about page!')
