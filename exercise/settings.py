@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'exercise.wsgi.application'
 DATABASES = {
             'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'travel',
-            'USER': 'postgres',
-            'PASSWORD': 'SuperUser123',
+            'NAME': 'exercise_project',
+            'USER': 'admin_user',
+            'PASSWORD': 'admin123',
             'HOST': 'localhost'
     }
 }
