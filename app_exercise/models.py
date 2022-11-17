@@ -12,8 +12,9 @@ class Wokout_Group(models.Model):
         db_table = 'workout_cat'
 
 class Workout(models.Model):
+    workout_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     workout_name = models.CharField(max_length=50)
-    category_id = models.ForeignKey(Wokout_Group, on_delete = models.CASCADE)
+    category = models.ForeignKey(Wokout_Group, on_delete = models.CASCADE)
     # main_photo = models.ImageField(upload_to='photos')          
     # leave_date = models.DateField(default=datetime.today, blank=True)
 
@@ -25,11 +26,12 @@ class Workout(models.Model):
     
     
 class Person(models.Model):
+    person_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=100)    
     phone = models.CharField(max_length=13, blank=True)
-    workout = models.ManyToManyField(Workout, blank=True)
+    workout = models.ManyToManyField(Workout, blank=True,through='Person_Workout')
 
     def __str__(self):
         return (self.full_name)
@@ -46,3 +48,12 @@ class Person(models.Model):
 
     class Meta:
         db_table = 'person'
+
+class Person_Workout(models.Model):
+    
+    person = models.ForeignKey(Person, on_delete=models.CASCADE,primary_key=True)
+    workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
+
+    models.UniqueConstraint(fields=['person','workout'],name='comp_key_1')
+    class Meta:
+        db_table = 'person_workout'
