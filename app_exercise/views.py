@@ -4,12 +4,10 @@ from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
 def indexPageView(request) :
-    response = requests.get('https://wger.de/api/v2/exercise/') # https://wger.de/api/v2/exercise-base/ another good endpoint
-    response = response.json()
-    return JsonResponse(response)
+    return render(request, 'app_exercise/index.html')
 
 def addingPageView(request) :
-    return HttpResponse('Welcome to the adding page!')
+    return render(request, 'app_exercise/add_workout.html')
 
 def listPageView(request):
     return HttpResponse('Welcome to the listing page!')
