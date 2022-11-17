@@ -14,7 +14,7 @@ class Wokout_Group(models.Model):
 class Workout(models.Model):
     workout_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     workout_name = models.CharField(max_length=50)
-    category = models.ForeignKey(Wokout_Group, on_delete = models.CASCADE)
+    category = models.ForeignKey(Wokout_Group, on_delete = models.DO_NOTHING)
     # main_photo = models.ImageField(upload_to='photos')          
     # leave_date = models.DateField(default=datetime.today, blank=True)
 
@@ -50,10 +50,28 @@ class Person(models.Model):
         db_table = 'person'
 
 class Person_Workout(models.Model):
-    
-    person = models.ForeignKey(Person, on_delete=models.CASCADE,primary_key=True)
+    person_workout_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
-
-    models.UniqueConstraint(fields=['person','workout'],name='comp_key_1')
     class Meta:
         db_table = 'person_workout'
+        constraints = [
+        models.UniqueConstraint(fields=['person', 'workout'], name='person_workout_pk')
+    ]
+
+    def __str__(self):
+        return f'{self.person} {self.workout}'
+
+class Person_Workout_Data(models.Model):
+
+    person_workout = models.ForeignKey(Person_Workout,on_delete=models.CASCADE)
+    workout_date = models.DateField(default=datetime.today, blank=True)
+    num_sets = models.SmallIntegerField(default=0, blank=True)
+    num_reps = models.SmallIntegerField(default=0, blank=True)
+    weight_used = models.SmallIntegerField(default=0, blank=True)
+
+    class Meta:
+        db_table = 'person_workout_data'
+
+    def __str__(self):
+        return f'{self.person_workout} {self.workout_date}'
