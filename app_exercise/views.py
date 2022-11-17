@@ -10,7 +10,7 @@ def addingPageView(request) :
     return render(request, 'app_exercise/add_workout.html')
 
 def listPageView(request):
-    return HttpResponse('Welcome to the listing page!')
+    return render(request, 'app_exercise/list_workout.html')
 
 def aboutPageView(request):
     return HttpResponse('Welcome to the about page!')
