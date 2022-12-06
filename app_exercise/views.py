@@ -3,6 +3,9 @@ import requests
 from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
+def loginPageView(request):
+    return render(request,'login/login-index.html')
+    
 def indexPageView(request) :
     return render(request, 'app_exercise/index.html')
 
