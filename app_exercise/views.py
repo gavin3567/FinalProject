@@ -4,6 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Workout_Group, Workout, Person, Person_Workout, Person_Workout_Data
 
 # Create your views here.
 def loginPageView(request):
@@ -38,10 +39,48 @@ def addingPageView(request) :
 def listPageView(request):
     return render(request, 'app_exercise/list_workout.html')
 
+@login_required 
 def dashboardPageView(request):
-    return render(request, 'app_exercise/dashboard.html')
+    # How do I make sure the person logged in will get the information they need?
+    person = Person.objects.all()
+    person_workout = Person_Workout.objects.all()
+    person_workout_data = Person_Workout_Data.objects.all()
+    workout = Workout.objects.all()
+    workout_cat = Workout_Group.objects.all()
+
+    current_user = request.user.id
+    user_name = request.user.username
+
+    context ={
+        'person' : person,
+        'current_user' : current_user,
+        'user_name' : user_name,
+        'person_workout' : person_workout,
+        'person_workout_data' : person_workout_data,
+        'workout' : workout,
+        'workout_cat' : workout_cat,
+    }
+    
+    return render(request, 'app_exercise/dashboard.html', context)
 
 def aboutPageView(request):
     return HttpResponse('Welcome to the about page!')
 
-#testing
+def storeWorkoutView(request) :
+    if request.method == 'POST':
+
+        workout = Workout()
+        workout_groups = Workout_Group.objects.all()
+
+        workout.workout_name = request.POST['workout_name']
+        workout.category = workout_groups.get(category_name=request.POST['category'])
+
+        
+        workout.save()
+
+    return render(request, 'app_exercise/list_workout.html')    
+
+def deleteWorkoutView(request, id) :
+    person_workout = Person_Workout_Data.objects.get(person_workout_id=id)
+    person_workout.delete()
+    return redirect('/dashboard/')

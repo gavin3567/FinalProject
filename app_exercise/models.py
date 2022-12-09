@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Wokout_Group(models.Model):
+class Workout_Group(models.Model):
     category_name = models.CharField(max_length=20)
 
     def __str__(self) :
@@ -15,7 +15,7 @@ class Wokout_Group(models.Model):
 class Workout(models.Model):
     workout = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     workout_name = models.CharField(max_length=50)
-    category = models.ForeignKey(Wokout_Group, on_delete = models.DO_NOTHING)
+    category = models.ForeignKey(Workout_Group, on_delete = models.DO_NOTHING)
     # main_photo = models.ImageField(upload_to='photos')          
     # leave_date = models.DateField(default=datetime.today, blank=True)
 
