@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Wokout_Group(models.Model):
@@ -12,7 +13,7 @@ class Wokout_Group(models.Model):
         db_table = 'workout_cat'
 
 class Workout(models.Model):
-    workout_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
+    workout = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     workout_name = models.CharField(max_length=50)
     category = models.ForeignKey(Wokout_Group, on_delete = models.DO_NOTHING)
     # main_photo = models.ImageField(upload_to='photos')          
@@ -26,7 +27,7 @@ class Workout(models.Model):
     
     
 class Person(models.Model):
-    person_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
+    person = models.OneToOneField(User,primary_key=True,on_delete=models.CASCADE,serialize=False)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=100)    
@@ -50,7 +51,7 @@ class Person(models.Model):
         db_table = 'person'
 
 class Person_Workout(models.Model):
-    person_workout_id = models.BigAutoField(primary_key=True,unique=True,serialize=False)
+    person_workout = models.BigAutoField(primary_key=True,unique=True,serialize=False)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE)
     class Meta:
