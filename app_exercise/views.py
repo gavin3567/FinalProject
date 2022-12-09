@@ -38,6 +38,9 @@ def addingPageView(request) :
 def listPageView(request):
     return render(request, 'app_exercise/list_workout.html')
 
+def dashboardPageView(request):
+    return render(request, 'app_exercise/dashboard.html')
+
 def aboutPageView(request):
     return HttpResponse('Welcome to the about page!')
 

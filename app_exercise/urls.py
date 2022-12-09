@@ -3,6 +3,7 @@ from .views import indexPageView, loginPageView, loginAuth, logout_view
 from .views import addingPageView
 from .views import listPageView
 from .views import aboutPageView
+from .views import dashboardPageView
 
 urlpatterns = [
     path("", indexPageView, name="index"),
@@ -12,4 +13,5 @@ urlpatterns = [
     path("adding/", addingPageView, name ="adding"),
     path("listing/", listPageView, name ="listing"),
     path("about/", aboutPageView, name ="about"),
+    path("dashboard/", dashboardPageView, name ="dashboard"),
 ]
