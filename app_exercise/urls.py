@@ -6,6 +6,8 @@ from .views import aboutPageView
 from .views import dashboardPageView
 from .views import storeWorkoutView
 from .views import deleteWorkoutView
+from .views import updateWorkoutView
+from .views import updateView
 
 urlpatterns = [
     path("", indexPageView, name="index"),
@@ -18,4 +20,6 @@ urlpatterns = [
     path("dashboard/", dashboardPageView, name ="dashboard"),
     path("addWorkout/",storeWorkoutView, name='addWorkout'),
     path("deleteWorkout/<int:id>/",deleteWorkoutView, name='deleteWorkout'),
+    path("updateWorkout/<int:id>/",updateWorkoutView, name='updateWorkout'),
+    path("update/",updateView, name='update-record'),
 ]

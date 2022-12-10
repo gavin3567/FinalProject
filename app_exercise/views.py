@@ -84,3 +84,31 @@ def deleteWorkoutView(request, id) :
     person_workout = Person_Workout_Data.objects.get(person_workout_id=id)
     person_workout.delete()
     return redirect('/dashboard/')
+
+def updateWorkoutView(request,id):
+    person_workout_data = Person_Workout_Data.objects.get(person_workout_id=id)
+    person_workout = Person_Workout.objects.get(person_workout=id)
+    context = {
+        'person_workout_data': person_workout_data,
+        'person_workout': person_workout,
+    }
+    
+    return render(request, 'app_exercise/update_workout.html',context)
+
+def updateView(request):
+
+    updated_sets = request.POST['num_sets']
+    updated_reps = request.POST['num_reps']
+    updated_weight = request.POST['weight_used']
+    updated_date = request.POST['date_entered']
+    id = int(request.POST['person_workout_id'])
+
+    person_workout_data = Person_Workout_Data.objects.get(person_workout_id=id)
+
+    person_workout_data.workout_date = updated_date
+    person_workout_data.num_sets = updated_sets
+    person_workout_data.num_reps = updated_reps
+    person_workout_data.weight_used = updated_weight
+    person_workout_data.save()
+
+    return redirect('/dashboard/')
