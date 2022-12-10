@@ -20,7 +20,7 @@
     <title>Login</title>
 </head>
 <body>
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-100 gradient-form" >
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
@@ -35,38 +35,46 @@
                         <h4 class="mt-1 mb-5 pb-1">Welcome to our Exercise App</h4>
                       </div>
 
-                      {% if messages %}
-                      {% for message in messages %}
-                        <div class="alert {{ message.tags }} alert-danger" role="alert" >
-                          {{ message }}
-                        </div>
-                      {% endfor %}
-                    {% endif %}
-
-                      <form method="POST" action="{% url 'login-auth' %}">
+                      <form method="POST" action="{% url 'account-created' %}">
                       {% csrf_token %}
-                        <p>Please login to your account</p>
+                        <p>Please create your account</p>
       
-                        <div class="form-outline mb-4">
-                          <label class="form-label" for="form2Example11">Username</label>
-                          <input type="text" id="form2Example11" class="form-control" name="username"
+                        <div class="mb-4">
+                          <label class="form-label" for="username">Username</label>
+                          <input type="text" id="username" class="form-control" name="username"
                             placeholder="Phone number or email address" />
                         </div>
       
-                        <div class="form-outline mb-4">
-                          <label class="form-label" for="form2Example22">Password</label>
-                          <input type="password" id="form2Example22" class="form-control" name="password"/> 
+                        <div class="mb-4">
+                          <label class="form-label" for="password">Password</label>
+                          <input type="password" id="password" class="form-control" name="password"/> 
                         </div>
-      
+
+                        <div class="mb-4">
+                            <label class="form-label" for="first_name">First Name</label>
+                            <input type="text" id="first_name" class="form-control" name="first_name" /> 
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label" for="last_name">Last Name</label>
+                            <input type="text" id="last_name" class="form-control" name="last_name"/> 
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label" for="email">Email</label>
+                            <input type="text" id="email" class="form-control" name="email"/> 
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="text" id="phone" class="form-control" name="phone"/> 
+                        </div>
+                        
                         <div class="text-center pt-1 mb-5 pb-1">
-                          <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log in</button>
-                          <a class="text-muted" href="#!">Forgot password?</a>
-                        </div>
+                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Sign Up</button>
+                        </div> 
       
-                        <div class="d-flex align-items-center justify-content-center pb-4">
-                          <p class="mb-0 me-2">Don't have an account?</p>
-                          <a href='/create-user'><button type="button" class="btn btn-outline-danger" >Create new</button></a>
-                        </div>
+      
                       </form>
       
                     </div>
