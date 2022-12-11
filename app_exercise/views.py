@@ -53,9 +53,22 @@ def indexPageView(request) :
     return render(request, 'app_exercise/index.html')
 
 
-@login_required 
+@login_required
 def listPageView(request):
-    return render(request, 'app_exercise/list_workout.html')
+   group = Workout.objects.all()
+   data= Person_Workout_Data.objects.all()
+   pworkout = Person_Workout
+   person=Person
+  
+ 
+   context = {
+       'group': group,
+       'data':data,
+       'pworkout':pworkout,
+       'person':person,
+  
+   }
+   return render(request, 'app_exercise/list_workout.html',context)
 
 @login_required 
 def dashboardPageView(request):
