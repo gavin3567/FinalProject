@@ -1,125 +1,119 @@
+<!-- css section-->
 <style>
- thead,
- tfoot {
-  background-color: #2260A6;
-  color: #ffffff;
-  text-align: left;
-  
+  thead,
+  tfoot {
+   background-color: #2260A6;
+   color: #ffffff;
+   text-align: left;
+  }
+   tbody {
      
- }
-  tbody {
+     background-color: #f3f3f3;
+     font-weight: bold;
+     color: #2566B0;
+  }
+   table {
+     border-collapse: collapse;
+     
+     margin: 25px 0;
+     font-size: 0.9em;
+     min-width: 400px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+     border-bottom: 1.5px solid #2566B0
     
-    background-color: #f3f3f3;
-    font-weight: bold;
-    color: #2566B0;
-    
- }
-
-  table {
-    border-collapse: collapse;
-    
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .25);
-    border-bottom: 1.5px solid #2566B0
-    
-   
-
- }
+  }
+   td,
+  th {
+      border: 2px solid rgb(190, 190, 190);
+      padding: 12px 15px;;
+      font-family: "Nunito"
+  }
+   td {
+      text-align: left;
+  }
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
  
-  td,
- th {
-     border: 2px solid rgb(190, 190, 190);
-     padding: 12px 15px;;
- }
-  td {
-     text-align: left;
- }
- .center {
-   margin-left: auto;
-   margin-right: auto;
- }
-
-
+  </style>
+ <!-- End css section -->
  
  
- </style>
+ <!-- search in nav section -->
+ {% extends 'base.html' %}
+ {%block search%}
+ <form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-primary" type="submit">Search</button>
+ </form>
+ {% endblock %}
+ {% load static %}
+ {%block content%}  
  
-
+    <!-- ======= Header Section ======= -->
+    <section id="portfolio" class="portfolio">
+  
+        <div class="container" data-aos="fade-up">
+           <header class="section-header">
+            <h2>Workout List</h2>
+            <p>Check out your latest workouts</p>
+           
+          </header>
+           <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
  
+               <!-- filter section -->
+               <form name="form" method="get" action="{% url 'listing' %}">
+                 <label for='first_name'>Select the Categroy:</label>
+                 <select name="category" id="category">
+                   <option 
+                   {% for group in group %}
+                   value="
+                   {{group.workout}}">{{group.category|capfirst}}</option>
+                   {% endfor %}
+                 </select>
+                 <button type="submit">Search</button>
+               </form>
+                <!-- end filter section -->
+               <br>
+               <br>
  
-{% extends 'base.html' %}
-{%block search%}
-<form class="d-flex" role="search">
- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
- <button class="btn btn-primary" type="submit">Search</button>
-</form>
+  <!-- table section -->
+  <table class="center">          
+                <thead>
+ <!-- table head -->
+                    <tr>
+                        <th>Body Part</th>
+                        <th scope="col">Workout Name</th>
+                        <th scope="col">Sets</th>
+                        <th scope="col">Reps</th>
+                        <th scope="col">Weights</th>
+                        <th scope="col">Date Entered</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+                       
+                    </tr>
+                </thead>
+ <!-- table body -->
+                <tbody>
+                   
+                  {% for data in data %}
+                  <tr>
+                    <th scope="row">{{data.person_workout.workout|capfirst}}</th>
+                    <th scope="row">{{data.person_workout.workout.category|capfirst}}</th>
+                    <th scope="row">{{data.num_sets|capfirst}}</th>
+                    <th scope="row">{{data.num_reps|capfirst}}</th>
+                    <th scope="row">{{data.weight_used|capfirst}}</th>
+                    <th scope="row">{{data.workout_date|capfirst}}</th>
+                    <td><a class="text-danger" href="{">DELETE</a></td>
+                    <td><a class="text-danger" href="{">ADD</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table> 
+       </section>
+  <!-- end table section -->
+      {%endblock%}
  
-{% endblock %}
-{% load static %}
-{%block content%}  
-   <!-- ======= Portfolio Section ======= -->
-   <section id="portfolio" class="portfolio">
- 
-       <div class="container" data-aos="fade-up">
-          <header class="section-header">
-           <h2>Workout List</h2>
-           <p>Check out your latest workouts</p>
-          
-         </header>
-          <div class="row" data-aos="fade-up" data-aos-delay="100">
-           <div class="col-lg-12 d-flex justify-content-center">
-             <ul id="portfolio-flters">
-               <li data-filter="*" class="filter-active">All</li>
-               <li data-filter=".filter-app">App</li>
-               <li data-filter=".filter-card">Card</li>
-               <li data-filter=".filter-web">Web</li>
-              <br>
-              <br>
-{% comment %} End of portfolio {% endcomment %}
- 
- 
- 
- 
-{% comment %} table section {% endcomment %}
-{% comment %} <table class="center"> {% endcomment %}
- <table class="center">          
-               <thead>
-         {% comment %} table head {% endcomment %}
-                   <tr>
-                       <th>Body Part</th>
-                       <th scope="col">Workout Name</th>
-                       <th scope="col">Sets</th>
-                       <th scope="col">Reps</th>
-                       <th scope="col">Weights</th>
-                       <th scope="col">Date Entered</th>
-                       <th scope="col"> </th>
-                       <th scope="col"> </th>
-                       <th scope="col"> </th>
-                   </tr>
-               </thead>
-         {% comment %} table body {% endcomment %}
-               <tbody>
-                  
-                 {% for data in data %}
-                 <tr>
-                   <th scope="row">{{data.person_workout.workout|capfirst}}</th>
-                   <th scope="row">{{data.person_workout.workout.category|capfirst}}</th>
-                   <th scope="row">{{data.num_sets|capfirst}}</th>
-                   <th scope="row">{{data.num_reps|capfirst}}</th>
-                   <th scope="row">{{data.weight_used|capfirst}}</th>
-                   <th scope="row">{{data.workout_date|capfirst}}</th>
-                   <td><a href="">EDIT</a></td>
-                   <td><a class="text-danger" href="{">DELETE</a></td>
-                   <td><a class="text-danger" href="{">ADD</a></td>
-                 </tr>
-                 {% endfor %}
-               </tbody>
-             </table>
-        
-        
-      </section>
- 
-     {%endblock%}
