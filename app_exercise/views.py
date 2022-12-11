@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Workout_Group, Workout, Person, Person_Workout, Person_Workout_Data
+from django.contrib.auth.models import User
 
 # Create your views here.
 def loginPageView(request):
@@ -13,6 +14,26 @@ def loginPageView(request):
 def logout_view(request):
     logout(request)
     return redirect('/login/')
+
+def createUserPageView(request) :
+    return render(request, 'login/create_user.html')
+
+def accountCreatedView(request) :
+    if request.method == 'POST':
+        user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+        person = Person()
+
+        person.person = user
+        person.first_name = request.POST['first_name']
+        person.last_name = request.POST['last_name']
+        person.phone = request.POST['phone']
+        person.email = request.POST['email']
+
+
+        user.save()
+        person.save()
+
+    return render(request,'login/login-index.html')
 
 def loginAuth(request):
     if request.method == 'POST':
@@ -31,9 +52,6 @@ def loginAuth(request):
 def indexPageView(request) :
     return render(request, 'app_exercise/index.html')
 
-@login_required 
-def addingPageView(request) :
-    return render(request, 'app_exercise/add_workout.html')
 
 @login_required 
 def listPageView(request):
