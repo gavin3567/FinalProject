@@ -42,13 +42,14 @@ def listPageView(request):
 @login_required 
 def dashboardPageView(request):
     # How do I make sure the person logged in will get the information they need?
+    current_user = request.user.id
+
     person = Person.objects.all()
-    person_workout = Person_Workout.objects.all()
-    person_workout_data = Person_Workout_Data.objects.all()
-    workout = Workout.objects.all()
+    person_workout = Person_Workout.objects.filter(person=current_user)
+    person_workout_data = Person_Workout_Data.objects.all().order_by('-workout_date')
+    workout = Person_Workout.objects.values('workout').distinct()
     workout_cat = Workout_Group.objects.all()
 
-    current_user = request.user.id
     user_name = request.user.username
 
     context ={
@@ -81,13 +82,14 @@ def storeWorkoutView(request) :
     return render(request, 'app_exercise/list_workout.html')    
 
 def deleteWorkoutView(request, id) :
-    person_workout = Person_Workout_Data.objects.get(person_workout_id=id)
+    person_workout = Person_Workout_Data.objects.get(id=id)
     person_workout.delete()
     return redirect('/dashboard/')
 
 def updateWorkoutView(request,id):
-    person_workout_data = Person_Workout_Data.objects.get(person_workout_id=id)
-    person_workout = Person_Workout.objects.get(person_workout=id)
+    current_user = request.user.id
+    person_workout_data = Person_Workout_Data.objects.get(id=id)
+    person_workout = Person_Workout.objects.filter(person=current_user)
     context = {
         'person_workout_data': person_workout_data,
         'person_workout': person_workout,
@@ -103,7 +105,7 @@ def updateView(request):
     updated_date = request.POST['date_entered']
     id = int(request.POST['person_workout_id'])
 
-    person_workout_data = Person_Workout_Data.objects.get(person_workout_id=id)
+    person_workout_data = Person_Workout_Data.objects.get(id=id)
 
     person_workout_data.workout_date = updated_date
     person_workout_data.num_sets = updated_sets

@@ -8,7 +8,6 @@
 </form> 
 {% endblock %}
 {% block content %}
- <body>
    <!-- sorts food dairy by date and shows date -->
     {% comment %} <div class="row">
         <div class="col-3">
@@ -28,56 +27,91 @@
         <p>Muscle Group: {{personWorkout.workout.category}}</p>
         <p>Workout ID: {{personWorkout.person_workout}}</p>
       {% for workout_data in person_workout_data %}
-        {% if personWorkout.person_workout == workout_data.person_workout_id %}
+        {% if personWorkout.person_workout == workout_data.person_workout %}
         <p>Number of sets: {{workout_data.num_sets}}</p>
         <p>Number of reps: {{workout_data.num_reps}}</p>
         <p>Date: {{workout_data.workout_date}}</p>
-        <p>ID: {{workout_data.person_workout_id}}</p>
+        <p>ID: {{workout_data.person_workout}}</p>
         <br>
         {% endif %}
     {% endfor %}
     {% endfor %} {% endcomment %}
-   <br>
-   {% for personWorkout in person_workout %}
-   <h4>{{personWorkout.workout.category}}</h4>
-   <div class="row mb-5">
-    <div class="col-9">
-      <table class="table table-striped table-hover caption-top">
-        <thead class="table-primary">
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Muscle Group</th>
-            <th scope="col">Sets</th>
-            <th scope="col">Reps</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Date</th>
-            <th scope="col">Edit</th>  
-            <th scope="col">Delete</th>  
-          </tr>
-        </thead>
-        <tbody>
-          {% for workout_data in person_workout_data %}
-            {% if personWorkout.person_workout == workout_data.person_workout_id %}
-            <tr>
-              <td>{{personWorkout.workout}}</td>
-              <td>{{personWorkout.workout.category}}</td>
-              <td>{{workout_data.num_sets}}</td>
-              <td>{{workout_data.num_reps}}</td>
-              <td>{{workout_data.weight_used}}</td>
-              <td>{{workout_data.workout_date}}</td>
-              <td><a href="{% url 'updateWorkout' id=workout_data.person_workout_id %}">EDIT</a></td>
-              <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.person_workout_id %}">DELETE</a></td>
-            </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <div class="col-3">
-      <a type="button" class="btn btn-primary" href="https://www.youtube.com/">Add New Workout</a>
-    </div>
+    {% for category in workout_cat %}
+        <div class="row mb-0 mx-auto">
+          <div class="col-9">
+            <div class="accordion" id="accordionCategories">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{category.category_name}}">
+                  <button class="accordion-button collapsed fs-2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{category.category_name}}" aria-expanded="false" aria-controls="flush-collapse{{category.category_name}}">
+                    {{category.category_name}}
+                  </button>
+                </h2>   
+                <div id="flush-collapse{{category.category_name}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{category.category_name}}" >
+
+                      {% for exercise in person_workout %}
+                        {% if exercise.workout.category.id == category.id %}
+                        <div class="accordion" id="accordionWorkouts">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-heading{{exercise.workout.workout}}">
+                              <button class="accordion-button collapsed fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{exercise.workout.workout}}" aria-expanded="false" aria-controls="flush-collapse{{exercise.workout.workout}}">
+                                {{exercise.workout}}
+                              </button>
+                            </h2>
+                            <div id="flush-collapse{{exercise.workout.workout}}" class="accordion-collapse collapse show" aria-labelledby="flush-heading{{exercise.workout.workout}}">
+                              <div class="accordion-body">
+
+                                    <table class="table table-striped table-hover caption-top">
+                                      <thead class="table-primary">
+                                        <tr>
+                                          <th scope="col">Sets</th>
+                                          <th scope="col">Reps</th>
+                                          <th scope="col">Weight</th>
+                                          <th scope="col">Date</th>
+                                          <th scope="col">Edit</th>  
+                                          <th scope="col">Delete</th>  
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for workout_data in person_workout_data %}
+                                          {% if exercise.workout.workout == workout_data.person_workout.workout.workout %}
+                                          <tr>
+                                            <td>{{workout_data.num_sets}}</td>
+                                            <td>{{workout_data.num_reps}}</td>
+                                            <td>{{workout_data.weight_used}}</td>
+                                            <td>{{workout_data.workout_date}}</td>
+                                            <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
+                                            <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
+                                          </tr>
+                                          {% endif %}
+                                        {% endfor %}
+                                      </tbody>
+                                    </table>
+                                
+                                  <div class="col-3">
+                                    <a type="button" class="btn btn-primary" href="https://www.youtube.com/">Add New Data</a>
+                                  </div>
+
+                              </div>
+                            </div>
+                          </div> 
+                        </div>
+                        {% endif %}
+                      {% endfor %}
+
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>  
+        {% endfor %}
+
+  <div class="row mb-5 mt-5">
   </div>
-  {% endfor %}
+  <div class="row mb-5 mt-5">
+  </div>
+  <div class="row mb-5 mt-5">
+  </div>
+   
 
  
 
@@ -85,7 +119,6 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
  
- </body>
-</html>
+
 {% endblock %}
 
