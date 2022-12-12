@@ -18,9 +18,10 @@
             <div class="col-md-7 col-lg-8 p-3">
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <p>1:({{workout.workout}})</p>
-                        <p>2:({{workout.workout_name}})</p>
-                        <p>3:({{workout.category}})</p>
+                        <p>1:({{person_workout_data.person_workout.workout}})</p>
+                        <p>2:({{person_workout_data.person_workout}})</p>
+                        <p>3:({{person_workout_data.person_workout.workout.workout_name}})</p>
+                        <p>3:({{person_workout_data.person_workout.workout.category}})</p>
                         <label for="food" class="form-label">Workout Name</label>
                         <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout.workout}}" readonly>
                         <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
