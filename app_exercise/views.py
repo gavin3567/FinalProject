@@ -57,16 +57,24 @@ def listPageView(request):
    current_user = request.user.id
    group = Workout.objects.all()
    person_workout = Person_Workout.objects.filter(person=current_user).distinct().values_list("workout")
-   workout = group.exclude(workout__in=person_workout)
- 
+   workout = group.exclude(workout__in=person_workout) 
    context = {
        'group': group,
        'person_workout':person_workout,
        'workout':workout
-
-  
    }
    return render(request, 'app_exercise/list_workout.html',context)
+
+@login_required
+def workoutSelection(request):
+    group = Workout.objects.all()
+    test= request.POST
+    context = {
+       'group': group,
+
+   }
+
+    return render(request, 'app_exercise/list_workout.html',context)
 
 @login_required 
 def dashboardPageView(request):
@@ -154,10 +162,12 @@ def addWorkoutView(request, id) :
     current_user = request.user.id
     person_workout_data = Person_Workout_Data.objects.get(id=id)
     person_workout = Person_Workout.objects.filter(person=current_user)
+    workout = Workout.objects.filter(workout=person_workout.workout)
 
     context = {
         'person_workout_data': person_workout_data,
         'person_workout': person_workout,
+        'workout' : workout
     }
 
     return render(request, 'app_exercise/add_workout_data.html',context)
