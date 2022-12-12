@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn FinalProject.wsgi
+web: python manage.py migrate && gunicorn exercise.wsgi
