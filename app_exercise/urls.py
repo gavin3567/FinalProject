@@ -12,6 +12,8 @@ from .views import createUserPageView
 from .views import accountCreatedView
 from .views import addWorkoutView
 from .views import addView
+from .views import workoutSelection
+
 
 urlpatterns = [
     path("", indexPageView, name="index"),
@@ -30,4 +32,5 @@ urlpatterns = [
     path("account-created/",accountCreatedView, name='account-created'),
     path("add_workout/<int:id>",addWorkoutView, name='add_workout'),
     path("add/",addView, name='add'),
+    path("select-workout/",workoutSelection, name='select-workout'),
 ]

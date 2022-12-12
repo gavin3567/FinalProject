@@ -84,13 +84,20 @@
                 </thead>
  <!-- table body -->
                 <tbody>
-                   
+                  <form method = "POST" action = "{% url 'select-workout' %}">
+                  
                   {% for entry in workout %}
+
                   <tr>
-                    <th scope="row">Workout</th>
-                    <th scope="row">{{entry.workout_name|capfirst}}</th>                
+                    <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
+                    
+                  
+                    <th scope="row">{{entry.workout_name|capfirst}}</th>
+               
+                              
                   </tr>
                   {% endfor %}
+                </form>
                 </tbody>
               </table> 
        </section>
