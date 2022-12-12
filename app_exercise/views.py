@@ -176,6 +176,7 @@ def addView(request) :
         person_workout_data.num_sets = updated_sets
         person_workout_data.num_reps = updated_reps
         person_workout_data.weight_used = updated_weight
+        person_workout_data.person_workout_id = id
         person_workout_data.save()
 
     return redirect('/dashboard/')
