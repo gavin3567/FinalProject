@@ -155,12 +155,10 @@ def addWorkoutView(request, id) :
     current_user = request.user.id
     person_workout_data = Person_Workout_Data.objects.get(id=id)
     person_workout = Person_Workout.objects.filter(person=current_user)
-    workout = Workout.objects.filter(workout=person_workout.workout)
 
     context = {
         'person_workout_data': person_workout_data,
         'person_workout': person_workout,
-        'workout' : workout
     }
 
     return render(request, 'app_exercise/add_workout_data.html',context)
