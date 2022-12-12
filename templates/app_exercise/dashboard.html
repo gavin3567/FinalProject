@@ -67,9 +67,9 @@
                                           <th scope="col">Reps</th>
                                           <th scope="col">Weight</th>
                                           <th scope="col">Date</th>
-                                          <th scope="col">Edit</th>  
-                                          <th scope="col">Delete</th>  
-                                          <th scope="col">Add Data</th>  
+                                          <th scope="col">Edit</th> 
+                                          <th scope="col">Add Workout</th> 
+                                          <th scope="col">Delete</th>   
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -81,17 +81,14 @@
                                             <td>{{workout_data.weight_used}}</td>
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
+                                            <td><a class="text-danger" href="{% url 'add_workout' id=workout_data.id %}">ADD WORKOUT</a></td>
                                             <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
-                                            <td><a class="text-danger" href="{% url 'add_workout' id=workout_data.id %}">Add Data</a></td>
                                           </tr>
                                           {% endif %}
                                         {% endfor %}
                                       </tbody>
                                     </table>
                                 
-                                  <div class="col-3">
-                                    <a type="button" class="btn btn-primary" href="https://www.youtube.com/">Add New Data</a>
-                                  </div>
 
                               </div>
                             </div>
