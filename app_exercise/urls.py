@@ -10,6 +10,8 @@ from .views import updateWorkoutView
 from .views import updateView
 from .views import createUserPageView
 from .views import accountCreatedView
+from .views import addWorkoutView
+from .views import addView
 
 urlpatterns = [
     path("", indexPageView, name="index"),
@@ -26,4 +28,6 @@ urlpatterns = [
     path("update/",updateView, name='update-record'),
     path("create-user/",createUserPageView, name='create-user'),
     path("account-created/",accountCreatedView, name='account-created'),
+    path("add_workout/<int:id>",addWorkoutView, name='add_workout'),
+    path("add/",addView, name='add'),
 ]
