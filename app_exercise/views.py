@@ -54,17 +54,16 @@ def indexPageView(request) :
 
 @login_required
 def listPageView(request):
+   current_user = request.user.id
    group = Workout.objects.all()
-   data= Person_Workout_Data.objects.all()
-   pworkout = Person_Workout
-   person=Person
-  
+   person_workout = Person_Workout.objects.filter(person=current_user).distinct().values_list("workout")
+   workout = set(group) - set(person_workout)
  
    context = {
        'group': group,
-       'data':data,
-       'pworkout':pworkout,
-       'person':person,
+       'person_workout':person_workout,
+       'workout':workout,
+
   
    }
    return render(request, 'app_exercise/list_workout.html',context)
