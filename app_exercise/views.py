@@ -62,7 +62,7 @@ def listPageView(request):
    context = {
        'group': group,
        'person_workout':person_workout,
-       'workout':workout,
+       'workout':workout
 
   
    }
