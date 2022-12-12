@@ -69,6 +69,7 @@
                                           <th scope="col">Date</th>
                                           <th scope="col">Edit</th>  
                                           <th scope="col">Delete</th>  
+                                          <th scope="col">Add Data</th>  
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -81,6 +82,7 @@
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
                                             <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
+                                            <td><a class="text-danger" href="{% url 'add_workout' id=workout_data.id %}">Add Data</a></td>
                                           </tr>
                                           {% endif %}
                                         {% endfor %}
