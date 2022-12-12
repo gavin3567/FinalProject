@@ -64,20 +64,7 @@
            <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-12 d-flex justify-content-center">
               <ul id="portfolio-flters">
- 
-               <!-- filter section -->
-               <form name="form" method="get" action="{% url 'listing' %}">
-                 <label for='first_name'>Select the Categroy:</label>
-                 <select name="entry" id="category">
-                   <option 
-                   {% for entry in workout %}
-                   value="
-                   {{entry.workout}}">{{entry.category|capfirst}}</option>
-                   {% endfor %}
-                 </select>
-                 <button type="submit">Search</button>
-               </form>
-                <!-- end filter section -->
+
                <br>
                <br>
  
@@ -88,8 +75,10 @@
                     <tr>
                         <th>Body Part</th>
                         <th scope="col">Workout Name</th>
+                        {% for entry in workout %}
+                        <th scope="col">{{entry.category|capfirst}}</th>
 
-                   
+                        {% endfor %}
                        
                     </tr>
                 </thead>
