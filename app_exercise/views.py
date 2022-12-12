@@ -57,7 +57,7 @@ def listPageView(request):
    current_user = request.user.id
    group = Workout.objects.all()
    person_workout = Person_Workout.objects.filter(person=current_user).distinct().values_list("workout").get(person=current_user)
-   workout = (set(group) - set(person_workout))
+   workout = group.exclude(workout=person_workout)
  
    context = {
        'group': group,

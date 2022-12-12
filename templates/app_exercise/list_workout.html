@@ -74,7 +74,7 @@
  <!-- table head -->
                     <tr>
                         <th>Body Part</th>
-                        <th scope="col">Workout Name</th>
+                    
                         {% for entry in workout %}
                         <th scope="col">{{entry.category|capfirst}}</th>
 
@@ -87,7 +87,7 @@
                    
                   {% for entry in workout %}
                   <tr>
-                    <th scope="row">{{entry.category|capfirst}}</th>
+                    <th scope="row">Workout</th>
                     <th scope="row">{{entry.workout_name|capfirst}}</th>                
                   </tr>
                   {% endfor %}
