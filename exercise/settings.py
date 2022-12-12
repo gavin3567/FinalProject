@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://web-production-a93f.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['web-production-a93f.up.railway.app']
 
 
 # Application definition
@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'whitenoise.middleware.WhiteNoiseMiddleware'
+                'whitenoise.middleware.WhiteNoiseMiddleware',
             ],
         },
     },
@@ -77,15 +77,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'exercise.wsgi.application'
 
+
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
-
-
-# # Database
-# # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # DATABASES = {
 #             'default': {
