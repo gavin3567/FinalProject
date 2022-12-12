@@ -69,6 +69,8 @@
                <br>
  
   <!-- table section -->
+  <form method = "POST" action = "{% url 'select-workout' %}">
+    {% csrf_token %}
   <table class="center">          
                 <thead>
  <!-- table head -->
@@ -83,9 +85,9 @@
                     </tr>
                 </thead>
  <!-- table body -->
+
                 <tbody>
-                  <form method = "POST" action = "{% url 'select-workout' %}">
-                  
+
                   {% for entry in workout %}
 
                   <tr>
@@ -97,11 +99,14 @@
                               
                   </tr>
                   {% endfor %}
-                  <button class="btn btn-primary" type="submit">Search</button>
+                
                 </form>
                 </tbody>
               </table> 
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
        </section>
+
   <!-- end table section -->
       {%endblock%}
  
