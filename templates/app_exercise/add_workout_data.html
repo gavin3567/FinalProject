@@ -1,93 +1,82 @@
 {% extends 'base.html' %}
 {% load static %}
 {%block content%} 
-
 <div class="container" style="background-color: #F6F9FF;">
-    <form name = "formdos" method="post" action="{% url 'add' %}">
-        {% csrf_token %}
-        <div class="row justify-content-center">
-
-            <div class="col-md-7 col-lg-8 p-3">
-                <div class="row g-3">
-
-                    <h3>Update your entry here</h3>
-                    <hr class="col-3">
+<form name = "formdos" method="post" action="{% url 'add' %}">
+    {% csrf_token %}
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-8 p-3">
+            <div class="row g-3">
+                <h3>Update your entry here</h3>
+                <hr class="col-3">
+            </div>
+        </div>
+        <div class="col-md-7 col-lg-8 p-3">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <p>1:({{person_workout_data.person_workout.workout}})</p>
+                    <p>2:({{person_workout_data.person_workout}})</p>
+                    <p>3:({{person_workout_data.person_workout.workout.workout_name}})</p>
+                    <p>3:({{person_workout_data.person_workout.workout.category}})</p>
+                    <label for="food" class="form-label">Workout Name</label>
+                    <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout.workout}}" readonly>
+                    <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
                 </div>
             </div>
 
-            <div class="col-md-7 col-lg-8 p-3">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <label for="food" class="form-label">Workout Name</label>
-                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout_data.person_workout.workout}}" readonly>
-                        <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
-                    </div>
-                </div>
-
-                <div class="row g-3 mt-2">
-                    <div class="col-sm-6">
-                        <label for="food" class="form-label">Muscle Group</label>
-                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout_data.person_workout.workout.category}}" readonly>
-                    </div>
-                </div>
-
-                <div class="row g-3 mt-2">
-
-                    <div class="col-sm-6">
-                        <label for="num_sets" class="form-label">Sets </label>
-                        <input type="number" class="form-control" id="num_sets" name="num_sets" min=1 value="{{person_workout_data.num_sets}}" required>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="num_reps" class="form-label">Reps </label>
-                        <input type="number" class="form-control" id="num_reps" name="num_reps" min=1 value="{{person_workout_data.num_reps}}" required>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="weight_used" class="form-label">Weight </label>
-                        <input type="number" class="form-control" id="weight_used" name="weight_used" min=1 value="{{person_workout_data.weight_used}}" required>
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="date_entered" class="form-label">Date:</label>
-                        <input type="date" class="form-control" id="date_entered" name="date_entered">
-                        <p>(Previous Date: {{person_workout_data.workout_date}})</p>
-                    </div>
-
+            <div class="row g-3 mt-2">
+                <div class="col-sm-6">
+                    <label for="food" class="form-label">Muscle Group</label>
+                    <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout.workout.category}}" readonly>
                 </div>
             </div>
 
-
-            <div class="col-md-7 col-lg-8 p-3">
-                <div class="row g-3">
-                    
+            <div class="row g-3 mt-2">
+                <div class="col-sm-6">
+                    <label for="num_sets" class="form-label">Sets </label>
+                    <input type="number" class="form-control" id="num_sets" name="num_sets" min=1 value="{{person_workout_data.num_sets}}" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="num_reps" class="form-label">Reps </label>
+                    <input type="number" class="form-control" id="num_reps" name="num_reps" min=1 value="{{person_workout_data.num_reps}}" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="weight_used" class="form-label">Weight </label>
+                    <input type="number" class="form-control" id="weight_used" name="weight_used" min=1 value="{{person_workout_data.weight_used}}" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="date_entered" class="form-label">Date:</label>
+                    <input type="date" class="form-control" id="date_entered" name="date_entered">
+                    <p>(Previous Date: {{person_workout_data.workout_date}})</p>
                 </div>
             </div>
-
-            <div class="col-md-7 col-lg-8 p-3">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                    </div>
-                </div>
-
+        </div>
+        <div class="col-md-7 col-lg-8 p-3">
+            <div class="row g-3">
+                
             </div>
-
-            <div class="col-md-7 col-lg-8 p-3">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                    </div>
+        </div>
+        <div class="col-md-7 col-lg-8 p-3">
+            <div class="row g-3">
+                <div class="col-sm-6">
                 </div>
-                <br>
-                <button class="w-100 btn btn-primary btn-lg" type="submit" >Save</button>
             </div>
-
-            
-        </div> 
-    </form>
-    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="javascript:history.back()">Back</a>
+        </div>
+        <div class="col-md-7 col-lg-8 p-3">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                </div>
+            </div>
+            <br>
+            <button class="w-100 btn btn-primary btn-lg" type="submit" >Save</button>
+        </div>
+        
+    </div> 
+</form>
+<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="javascript:history.back()">Back</a>
 </div>
 <script>
-    document.getElementById("date_entered").valueAsDate = {{person_workout_data.workout_date}}; 
-    {% comment %} auto populates date with today {% endcomment %}
+document.getElementById("date_entered").valueAsDate = {{person_workout_data.workout_date}}; 
+{% comment %} auto populates date with today {% endcomment %}
 </script>
-
 {%endblock%} 
