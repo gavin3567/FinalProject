@@ -23,7 +23,7 @@
                         <p>3:({{person_workout_data.person_workout.workout.workout_name}})</p>
                         <p>3:({{person_workout_data.person_workout.workout.category}})</p>
                         <label for="food" class="form-label">Workout Name</label>
-                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout.workout}}" readonly>
+                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout_data.person_workout.workout}}" readonly>
                         <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="row g-3 mt-2">
                     <div class="col-sm-6">
                         <label for="food" class="form-label">Muscle Group</label>
-                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout.workout.category}}" readonly>
+                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout_data.person_workout.workout.category}}" readonly>
                     </div>
                 </div>
 
