@@ -116,7 +116,10 @@ def deleteWorkoutView(request, id) :
     person_workout = Person_Workout_Data.objects.get(id=id)
     person_workout.delete()
     return redirect('/dashboard/')
-
+def deleteWorkoutView2(request, id) :
+    data = Workout.objects.get(id=id)
+    data.delete()
+    return redirect('/listing/')
 def updateWorkoutView(request,id):
     current_user = request.user.id
     person_workout_data = Person_Workout_Data.objects.get(id=id)

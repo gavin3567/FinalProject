@@ -35,6 +35,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .resizedTextbox {width: 50px; height: 20px}
  
   </style>
  <!-- End css section -->
@@ -90,26 +91,31 @@
                         <th scope="col">Sets</th>
                         <th scope="col">Reps</th>
                         <th scope="col">Weights</th>
-                        <th scope="col">Date Entered</th>
+                        <th scope="col"></th>
                         <th scope="col"> </th>
-                        <th scope="col"> </th>
+                   
                        
                     </tr>
                 </thead>
  <!-- table body -->
                 <tbody>
                    
-                  {% for data in data %}
+                  {% for group in group %}
                   <tr>
-                    <th scope="row">{{data.person_workout.workout|capfirst}}</th>
-                    <th scope="row">{{data.person_workout.workout.category|capfirst}}</th>
-                    <th scope="row">{{data.num_sets|capfirst}}</th>
-                    <th scope="row">{{data.num_reps|capfirst}}</th>
+                    <th scope="row">{{group.category|capfirst}}</th>
+                    <th scope="row">{{group.workout_name|capfirst}}</th>
+                    
+                   <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th>
+                    <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th>
+                    <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th> 
+
+                    {% comment %} <th scope="row">{{data.num_reps|capfirst}}</th>
                     <th scope="row">{{data.weight_used|capfirst}}</th>
-                    <th scope="row">{{data.workout_date|capfirst}}</th>
-                    <td><a class="text-danger" href="{">DELETE</a></td>
-                    <td><a class="text-danger" href="{">ADD</a></td>
+                    <th scope="row">{{data.workout_date|capfirst}}</th> {% endcomment %}
+                     <td><a class="text-danger" href="}">DELETE</a></td> 
+                    <td><a class="text-danger" href="{% url 'deleteWorkout2' id=group.id %}">ADD</a></td>
                   </tr>
+                  {% comment %} {% url 'deleteWorkout2' id=group.id %} {% endcomment %}
                   {% endfor %}
                 </tbody>
               </table> 
