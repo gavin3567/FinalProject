@@ -90,13 +90,14 @@
 
                   <tr>
                     <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
-                    
+        
                   
                     <th scope="row">{{entry.workout_name|capfirst}}</th>
                
                               
                   </tr>
                   {% endfor %}
+                  <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 </tbody>
               </table> 
