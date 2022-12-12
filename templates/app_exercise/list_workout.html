@@ -96,10 +96,10 @@
  <!-- table body -->
                 <tbody>
                    
-                  {% for group in group %}
+                  {% for entry in workout %}
                   <tr>
-                    <th scope="row">{{group.category|capfirst}}</th>
-                    <th scope="row">{{group.workout_name|capfirst}}</th>                
+                    <th scope="row">{{entry.category|capfirst}}</th>
+                    <th scope="row">{{entry.workout_name|capfirst}}</th>                
                   </tr>
                   {% endfor %}
                 </tbody>
