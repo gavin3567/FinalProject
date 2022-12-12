@@ -16,11 +16,14 @@
             </div>
 
             <div class="col-md-7 col-lg-8 p-3">
+                {% for category in person_workout %}
                 <div class="row g-3">
-
                     <div class="col-sm-6">
+                        <p>1:({{category.workout}})</p>
+                        <p>2:({{category.workout.workout}})</p>
+                        <p>3:({{category.workout.workout_name}})</p>
                         <label for="food" class="form-label">Workout Name</label>
-                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout.workout.workout}}" readonly>
+                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout.workout}}" readonly>
                         <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
                     </div>
                 </div>
@@ -28,10 +31,10 @@
                 <div class="row g-3 mt-2">
                     <div class="col-sm-6">
                         <label for="food" class="form-label">Muscle Group</label>
-                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout.workout.category}}" readonly>
+                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{category.workout.category}}" readonly>
                     </div>
                 </div>
-                
+                {% endfor %}
 
                 <div class="row g-3 mt-2">
 
