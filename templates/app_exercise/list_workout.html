@@ -88,11 +88,7 @@
                     <tr>
                         <th>Body Part</th>
                         <th scope="col">Workout Name</th>
-                        <th scope="col">Sets</th>
-                        <th scope="col">Reps</th>
-                        <th scope="col">Weights</th>
-                        <th scope="col"></th>
-                        <th scope="col"> </th>
+
                    
                        
                     </tr>
@@ -100,22 +96,11 @@
  <!-- table body -->
                 <tbody>
                    
-                  {% for group in group %}
+                  {% for pworkout in pworkout %}
                   <tr>
-                    <th scope="row">{{group.category|capfirst}}</th>
-                    <th scope="row">{{group.workout_name|capfirst}}</th>
-                    
-                   <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th>
-                    <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th>
-                    <th scope="row"><input class="resizedTextbox" type="text" name='first_name' id='first_name'></th> 
-
-                    {% comment %} <th scope="row">{{data.num_reps|capfirst}}</th>
-                    <th scope="row">{{data.weight_used|capfirst}}</th>
-                    <th scope="row">{{data.workout_date|capfirst}}</th> {% endcomment %}
-             
-                
+                    <th scope="row">{{pworkout.workout.category|capfirst}}</th>
+                    <th scope="row">{{pworkout.workout.workout_name|capfirst}}</th>                
                   </tr>
-                  {% comment %} {% url 'deleteWorkout2' id=group.id %} {% endcomment %}
                   {% endfor %}
                 </tbody>
               </table> 
