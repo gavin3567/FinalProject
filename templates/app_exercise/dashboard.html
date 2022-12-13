@@ -63,29 +63,27 @@
                                           <th scope="col">Date</th>
                                           <th scope="col">Edit</th> 
                                           <th scope="col">Delete</th> 
-                                          <th scope="col"></th> 
+                                          <th scope="col">Add Workout</th> 
+                                          
                                         </tr>
                                       </thead>
                                         {% for workout_data in person_workout_data %}
                                           {% if exercise.workout.workout == workout_data.person_workout.workout.workout %}
-                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">1.ADD WORKOUT</a>
                                           <tbody>
                                           <tr>
-                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">2.ADD WORKOUT</a>
                                             <td>{{workout_data.num_sets}}</td>
                                             <td>{{workout_data.num_reps}}</td>
                                             <td>{{workout_data.weight_used}}</td>
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
                                             <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
-                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">3.ADD WORKOUT</a>
+                                            <td><a href="{% url 'add_workout' id=workout_data.id %}" >ADD WORKOUT</a></td>
                                           </tr>
-                                           <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">4.ADD WORKOUT</a>
                                       </tbody>
                                           {% endif %}
                                         {% endfor %}
                                     </table>
-                                
+                                      <a class="btn btn-primary" href="{% url 'add_workout' id=person_workout_data.person_workout_id %}">4.ADD WORKOUT</a>
 
                               </div>
                             </div>
