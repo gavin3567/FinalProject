@@ -72,9 +72,10 @@ def workoutSelection(request):
     current_user = request.user.id
     group = Workout.objects.all()
     test= request.POST
-    request.POST[""]
+    workout= request.POST.getlist("workout")
     context = {
        'group': group,
+
    }
     return render(request, 'app_exercise/list_workout.html',context)
 
