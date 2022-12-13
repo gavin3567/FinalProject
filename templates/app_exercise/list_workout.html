@@ -71,47 +71,39 @@
   <!-- table section -->
   <form method = "POST" action = "{% url 'select-workout' %}">
     {% csrf_token %}
+    {% for cat in category %}
   <table class="center">          
                 <thead>
  <!-- table head -->
                  
                       <th scope="col">Body Parts</th>
                      
-                        {% for entry in workout %}
-                        <tr>
-                        <th scope="col">{{entry.category|capfirst}}</th>
-                        </tr>
-                        {% for entry in workout %}
-                  
-                        <tr>
-                          <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
-              
-                          <th scope="row">{{entry.workout_name|capfirst}}</th>
-                        </tr>
-               
-                        {% endfor %}
-
-                        {% endfor %}
-                       
+                   
+                      <th scope="col">{{cat.category_name|capfirst}}</th>  
                
                 </thead>
  <!-- table body -->
 
                 <tbody>
-{% comment %} 
-                  {% for entry in workout %}
-                  
+                 
+                        
                   <tr>
-                    <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
-        
-                    <th scope="row">{{entry.workout_name|capfirst}}</th>
+           
                   </tr>
-         
+
+                  {% for entry in workout %}
+                  {{if entry.category == cat.id}}
+                  <tr>
+                    <td scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></td>
+        
+                    <td scope="row">{{entry.workout_name|capfirst}}</td>
+                  </tr>
+                  {{ endif }}
                   {% endfor %}
-                 {% endcomment %}
                 </form>
                 </tbody>
               </table> 
+              {% endfor %}
               <button class="btn btn-primary" type="submit">Search</button>
             </form>
        </section>

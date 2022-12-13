@@ -58,22 +58,24 @@ def listPageView(request):
    group = Workout.objects.all()
    person_workout = Person_Workout.objects.filter(person=current_user).distinct().values_list("workout")
    workout = group.exclude(workout__in=person_workout) 
+   category = Workout_Group.objects.all()
    context = {
        'group': group,
        'person_workout':person_workout,
-       'workout':workout
+       'workout':workout,
+       'category':category
    }
    return render(request, 'app_exercise/list_workout.html',context)
 
 @login_required
 def workoutSelection(request):
+    current_user = request.user.id
     group = Workout.objects.all()
     test= request.POST
+    request.POST[""]
     context = {
        'group': group,
-
    }
-
     return render(request, 'app_exercise/list_workout.html',context)
 
 @login_required 
