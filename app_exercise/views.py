@@ -91,7 +91,7 @@ def dashboardPageView(request):
 
     person = Person.objects.all()
     person_workout = Person_Workout.objects.filter(person=current_user)
-    person_workout_data = Person_Workout_Data.objects.all().order_by('-workout_date')
+    person_workout_data = Person_Workout_Data.objects.filter(person_workout__in=person_workout).order_by('-workout_date')
     workout = Person_Workout.objects.values('workout').distinct()
     workout_cat = Workout_Group.objects.all()
 
