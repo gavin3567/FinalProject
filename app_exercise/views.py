@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Workout_Group, Workout, Person, Person_Workout, Person_Workout_Data
 from django.contrib.auth.models import User
+from django.contrib.postgres import search
 
 # Create your views here.
 def loginPageView(request):
@@ -213,7 +214,7 @@ def searchWorkouts(request):
 
     search = request.GET['search-db']
     result = workout.filter(workout_name__search=search)
-    
+
     if result.count() > 0:
         context = {
         'person_workout':person_workout,
