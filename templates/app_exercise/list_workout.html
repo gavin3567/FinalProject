@@ -71,25 +71,24 @@
   <!-- table section -->
   <form method = "POST" action = "{% url 'select-workout' %}">
     {% csrf_token %}
+    <tr>
     {% for cat in category %}
   <table class="center">          
                 <thead>
  <!-- table head -->
-                 
+ <tr>
                       <th scope="col">Body Parts</th>
                      
                    
                       <th scope="col">{{cat.category_name|capfirst}}</th>  
-               
+                    </tr>          
                 </thead>
  <!-- table body -->
 
                 <tbody>
                  
                         
-                  <tr>
-           
-                  </tr>
+         
 
                   {% for entry in workout %}
                   {%if entry.category.id == cat.id%}
@@ -104,6 +103,7 @@
                 </tbody>
               </table> 
               {% endfor %}
+            </tr>
               <button class="btn btn-primary" type="submit">Search</button>
             </form>
        </section>
