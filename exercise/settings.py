@@ -1,3 +1,5 @@
+# Last edited on 12/13/2022. Made by Eva Wu, Brandon Griffiths, Parker Warner, and Gavin Ostheimer.
+
 """
 Django settings for exercise project.
 
