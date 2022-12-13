@@ -71,13 +71,15 @@ def listPageView(request):
 def workoutSelection(request):
     current_user = request.user.id
     person = Person.objects.get(person = current_user)
+
     group = Workout.objects.all()
     test= request.POST
     workout= request.POST.getlist("workout")
     for id in workout:
+        workout = Workout.objects.get(workout = id)
         person_workout = Person_Workout()
         person_workout.person = person
-        person_workout.workout = id 
+        person_workout.workout = workout
         person_workout.save()
  
   
