@@ -1,3 +1,9 @@
+{% comment %} 
+
+  This page will show all the workouts and allows users to choose a workout to add to the dashboard
+
+{% endcomment %}
+
 <!-- css section-->
 <style>
   thead,
@@ -41,7 +47,6 @@
  <!-- End css section -->
  
  
- <!-- search in nav section -->
  {% extends 'base.html' %}
  {% load static %}
  {%block content%}  
@@ -53,7 +58,7 @@
            <header class="section-header">
             <h2>Workout List</h2>
             <p>Check out your latest workouts</p>
-            
+
             <form class="d-flex" role="search">
               <input style="height:50px; width:200px;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-primary" type="submit">Search</button>
