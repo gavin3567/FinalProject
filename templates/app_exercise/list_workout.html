@@ -1,3 +1,9 @@
+{% comment %} 
+
+  This page will show all the workouts and allows users to choose a workout to add to the dashboard
+
+{% endcomment %}
+
 <!-- css section-->
 <style>
   thead,
@@ -41,12 +47,12 @@
  <!-- End css section -->
  
  
- <!-- search in nav section -->
  {% extends 'base.html' %}
  {% load static %}
  {%block content%}  
  
     <!-- ======= Header Section ======= -->
+
 <section id="portfolio" class="portfolio">
 
   <div class="container" data-aos="fade-up">
@@ -62,6 +68,7 @@
           <div class="input-group">
             <input style="height:50px; width:200px;" class="form-control me-2" class = "center" type="search" placeholder="Search" aria-label="Search" name="search-db">
             <div class="input-group-append">
+
               <button class="btn btn-primary" type="submit">Search</button>
             </div>
           </div>
