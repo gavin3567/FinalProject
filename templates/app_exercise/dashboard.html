@@ -63,6 +63,7 @@
                                           <th scope="col">Date</th>
                                           <th scope="col">Edit</th> 
                                           <th scope="col">Delete</th> 
+                                          <th scope="col"></th> 
                                         </tr>
                                       </thead>
                                         {% for workout_data in person_workout_data %}
@@ -76,9 +77,10 @@
                                             <td>{{workout_data.weight_used}}</td>
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
+                                            <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
+                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">3.ADD WORKOUT</a>
                                           </tr>
-                                           <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">3.ADD WORKOUT</a>
-
+                                           <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">4.ADD WORKOUT</a>
                                       </tbody>
                                           {% endif %}
                                         {% endfor %}
