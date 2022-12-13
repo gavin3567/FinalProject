@@ -183,11 +183,17 @@ def addWorkoutView(request, id) :
 
 def addView(request) :
     if request.method == 'POST':
+        current_user = request.user.id
+        workout_query = Workout.objects.get(workout=int(request.POST['workout_id']))
+        person_workout = Person_Workout.objects.get(person=current_user, workout=workout_query)
+
         updated_sets = request.POST['num_sets']
         updated_reps = request.POST['num_reps']
         updated_weight = request.POST['weight_used']
         updated_date = request.POST['date_entered']
-        id = int(request.POST['person_workout_id'])
+        id = int(request.POST['workout_id'])
+
+
 
         person_workout_data = Person_Workout_Data()
 
@@ -195,7 +201,7 @@ def addView(request) :
         person_workout_data.num_sets = updated_sets
         person_workout_data.num_reps = updated_reps
         person_workout_data.weight_used = updated_weight
-        person_workout_data.person_workout_id = id
+        person_workout_data.person_workout = person_workout
         person_workout_data.save()
 
     return redirect('/dashboard/')
