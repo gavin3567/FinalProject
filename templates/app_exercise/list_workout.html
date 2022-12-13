@@ -92,7 +92,7 @@
                   </tr>
 
                   {% for entry in workout %}
-                  {{if entry.category == cat.id}}
+                  {{if entry.category.id == cat.id}}
                   <tr>
                     <td scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></td>
         
