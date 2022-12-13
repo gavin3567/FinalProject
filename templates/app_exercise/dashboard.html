@@ -65,10 +65,10 @@
                                           <th scope="col">Delete</th> 
                                         </tr>
                                       </thead>
-                                      <tbody>
                                         {% for workout_data in person_workout_data %}
                                           {% if exercise.workout.workout == workout_data.person_workout.workout.workout %}
-                                          <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">1.ADD WORKOUT</a>
+                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">1.ADD WORKOUT</a>
+                                          <tbody>
                                           <tr>
                                             <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">2.ADD WORKOUT</a>
                                             <td>{{workout_data.num_sets}}</td>
@@ -76,12 +76,12 @@
                                             <td>{{workout_data.weight_used}}</td>
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
-                                            <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
                                           </tr>
                                            <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">3.ADD WORKOUT</a>
+
+                                      </tbody>
                                           {% endif %}
                                         {% endfor %}
-                                      </tbody>
                                     </table>
                                 
 
