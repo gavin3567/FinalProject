@@ -1,3 +1,5 @@
+# Last edited on 12/13/2022. Made by Eva Wu, Brandon Griffiths, Parker Warner, and Gavin Ostheimer.
+
 """
 Django settings for exercise project.
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'app_exercise.apps.AppExerciseConfig',
 ]
 

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Workout_Group, Workout, Person, Person_Workout, Person_Workout_Data
 from django.contrib.auth.models import User
+from django.contrib.postgres import search
 
 # Create your views here.
 def loginPageView(request):
@@ -191,8 +192,6 @@ def addView(request) :
         updated_reps = request.POST['num_reps']
         updated_weight = request.POST['weight_used']
         updated_date = request.POST['date_entered']
-        id = int(request.POST['workout_id'])
-
 
 
         person_workout_data = Person_Workout_Data()
@@ -205,3 +204,25 @@ def addView(request) :
         person_workout_data.save()
 
     return redirect('/dashboard/')
+
+def searchWorkouts(request):
+    current_user = request.user.id
+    group = Workout.objects.all()
+    person_workout = Person_Workout.objects.filter(person=current_user).distinct().values_list("workout")
+    workout = group.exclude(workout__in=person_workout) 
+    category = Workout_Group.objects.all()
+
+    search = request.GET['search-db']
+    result = workout.filter(workout_name__search=search)
+
+    if result.count() > 0:
+        context = {
+        'person_workout':person_workout,
+        'workout':result,
+        'category':category
+        }
+        return render(request, 'app_exercise/list_workout.html',context)
+    else:
+        return redirect('/listing/')
+
+    
