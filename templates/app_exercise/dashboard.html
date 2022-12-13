@@ -1,12 +1,6 @@
 <!-- File that displays stats of nutrients and allows the user to add more foods -->
 
 {% extends 'base.html'%}
-{%block search%}
-<form class="d-flex" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-primary" type="submit">Search</button>
-</form> 
-{% endblock %}
 {% block content %}
    <!-- sorts food dairy by date and shows date -->
     {% comment %} <div class="row">
@@ -68,7 +62,6 @@
                                           <th scope="col">Weight</th>
                                           <th scope="col">Date</th>
                                           <th scope="col">Edit</th> 
-                                          <th scope="col">Add Workout</th> 
                                           <th scope="col">Delete</th>   
                                         </tr>
                                       </thead>
@@ -83,10 +76,10 @@
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
                                             <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
                                           </tr>
-                                          <a class="w-100 btn btn-primary btn-lg" href="{% url 'add_workout' id=workout_data.id %}">ADD WORKOUT</a>
                                           {% endif %}
                                         {% endfor %}
                                       </tbody>
+                                      <a class="btn btn-primary" href="{% url 'add_workout' id=workout_data.id %}">ADD WORKOUT</a>
                                     </table>
                                 
 
