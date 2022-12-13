@@ -73,11 +73,14 @@ def workoutSelection(request):
     group = Workout.objects.all()
     test= request.POST
     workout= request.POST.getlist("workout")
-    context = {
-       'group': group,
-
-   }
-    return render(request, 'app_exercise/list_workout.html',context)
+    for id in workout:
+        person_workout = Person_Workout()
+        person_workout.person = current_user
+        person_workout.workout = id 
+        person_workout.save()
+ 
+  
+    return render(request, 'app_exercise/dashboard.html')
 
 @login_required 
 def dashboardPageView(request):
