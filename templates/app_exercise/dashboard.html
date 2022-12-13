@@ -2,7 +2,6 @@
 
 {% extends 'base.html'%}
 {% block content %}
-
    <!-- sorts food dairy by date and shows date -->
     {% comment %} <div class="row">
         <div class="col-3">
@@ -31,11 +30,7 @@
         {% endif %}
     {% endfor %}
     {% endfor %} {% endcomment %}
-
-</style>
-  
     {% for category in workout_cat %}
-
         <div class="row mb-0 mx-auto">
           <div class="col-9">
             <div class="accordion" id="accordionCategories">
@@ -97,13 +92,13 @@
                         {% endif %}
                       {% endfor %}
 
-              
+                </div>
               </div> 
             </div>
           </div>
         </div>  
         {% endfor %}
-      </div>
+
   <div class="row mb-5 mt-5">
   </div>
   <div class="row mb-5 mt-5">
