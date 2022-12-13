@@ -81,9 +81,9 @@
                                             <td>{{workout_data.weight_used}}</td>
                                             <td>{{workout_data.workout_date}}</td>
                                             <td><a href="{% url 'updateWorkout' id=workout_data.id %}">EDIT</a></td>
-                                            <td><a href="{% url 'add_workout' id=workout_data.id %}">ADD WORKOUT</a></td>
                                             <td><a class="text-danger" href="{% url 'deleteWorkout' id=workout_data.id %}">DELETE</a></td>
                                           </tr>
+                                          <a class="w-100 btn btn-primary btn-lg" href="{% url 'add_workout' id=workout_data.id %}">ADD WORKOUT</a>
                                           {% endif %}
                                         {% endfor %}
                                       </tbody>
