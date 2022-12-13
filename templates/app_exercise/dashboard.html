@@ -50,9 +50,10 @@
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading{{exercise.workout.workout}}">
                               <button class="accordion-button collapsed fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{exercise.workout.workout}}" aria-expanded="false" aria-controls="flush-collapse{{exercise.workout.workout}}">
-                                {{exercise.workout}}<a href="{% url 'add_workout' id=exercise.workout.workout %}" >1. ADD WORKOUT</a>
+                                {{exercise.workout}}
                               </button>
                             </h2>
+                            <a class="btn btn-primary" href="{% url 'add_workout' id=exercise.workout.workout %}" >1. ADD WORKOUT</a>
                             <div id="flush-collapse{{exercise.workout.workout}}" class="accordion-collapse collapse show" aria-labelledby="flush-heading{{exercise.workout.workout}}">
                               <div class="accordion-body">
 
@@ -66,7 +67,7 @@
                                           <th scope="col">Edit</th> 
                                           <th scope="col">Delete</th> 
                                           <th scope="col">Add Workout</th> 
-                                          <a href="{% url 'add_workout' id=exercise.workout.workout %}" >2. ADD WORKOUT</a>
+                                          <a class="btn btn-primary" href="{% url 'add_workout' id=exercise.workout.workout %}" >2. ADD WORKOUT</a>
                                         </tr>
                                       </thead>
                                         {% for workout_data in person_workout_data %}
@@ -85,7 +86,7 @@
                                           {% endif %}
                                         {% endfor %}
                                     </table>
-                                    <a href="{% url 'add_workout' id=exercise.workout.workout %}" >3.ADD WORKOUT</a>
+                                    <a class="btn btn-primary" href="{% url 'add_workout' id=exercise.workout.workout %}" >3.ADD WORKOUT</a>
                                       {% comment %} <a class="btn btn-primary" href="{% url 'add_workout' id=person_workout_data.person_workout_id %}">4.ADD WORKOUT</a> {% endcomment %}
 
                               </div>

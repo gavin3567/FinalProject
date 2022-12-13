@@ -19,15 +19,15 @@
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label for="food" class="form-label">Workout Name: </label>
-                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{person_workout_data.person_workout.workout}}" readonly>
-                        <input type="hidden" name="person_workout_id" value="{{person_workout_data.person_workout_id}}">
+                        <input type="text" class="form-control" id="workout_name" name="workout_name" min=1 required value="{{workout.workout_name}}" readonly>
+                        <input type="hidden" name="workout_id" value="{{workout.workout}}">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-2">
                     <div class="col-sm-6">
                         <label for="food" class="form-label">Muscle Group: </label>
-                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{person_workout_data.person_workout.workout.category}}" readonly>
+                        <input type="text" class="form-control" id="muscle_group" name="muscle_group" min=1 required value="{{workout.category.category_name}}" readonly>
                     </div>
                 </div>
 
@@ -35,22 +35,21 @@
 
                     <div class="col-sm-6">
                         <label for="num_sets" class="form-label">Sets: </label>
-                        <input type="number" class="form-control" id="num_sets" name="num_sets" min=1 value="{{person_workout_data.num_sets}}" required>
+                        <input type="number" class="form-control" id="num_sets" name="num_sets" min=1 value="" required>
                     </div>
 
                     <div class="col-sm-6">
                         <label for="num_reps" class="form-label">Reps: </label>
-                        <input type="number" class="form-control" id="num_reps" name="num_reps" min=1 value="{{person_workout_data.num_reps}}" required>
+                        <input type="number" class="form-control" id="num_reps" name="num_reps" min=1 value="" required>
                     </div>
 
                     <div class="col-sm-6">
                         <label for="weight_used" class="form-label">Weight: </label>
-                        <input type="number" class="form-control" id="weight_used" name="weight_used" min=1 value="{{person_workout_data.weight_used}}" required>
+                        <input type="number" class="form-control" id="weight_used" name="weight_used" min=1 value="" required>
                     </div>
                     <div class="col-sm-6">
                         <label for="date_entered" class="form-label">Date:</label>
                         <input type="date" class="form-control" id="date_entered" name="date_entered">
-                        <p>(Previous Date: {{person_workout_data.workout_date}})</p>
                     </div>
 
                 </div>
