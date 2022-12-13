@@ -79,6 +79,15 @@
                     
                         {% for entry in workout %}
                         <th scope="col">{{entry.category|capfirst}}</th>
+                        {% for entry in workout %}
+                  
+                        <tr>
+                          <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
+              
+                          <th scope="row">{{entry.workout_name|capfirst}}</th>
+                        </tr>
+               
+                        {% endfor %}
 
                         {% endfor %}
                        
@@ -87,19 +96,17 @@
  <!-- table body -->
 
                 <tbody>
-
+{% comment %} 
                   {% for entry in workout %}
-
+                  
                   <tr>
                     <th scope="row"> <input name = "workout" class="form-check-input" type="checkbox" value="{{entry.workout}}" id="flexCheckChecked" ></th>
         
-                  
                     <th scope="row">{{entry.workout_name|capfirst}}</th>
-               
-                              
                   </tr>
+         
                   {% endfor %}
-                
+                 {% endcomment %}
                 </form>
                 </tbody>
               </table> 
