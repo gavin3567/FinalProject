@@ -1,36 +1,17 @@
-<!-- File that displays stats of nutrients and allows the user to add more foods -->
+{% comment %} 
+
+  This is the main dashboard page. Dynamically shows each category and workouts for the user. 
+  Has the option to Edit, Delete, or Add new workouts
+
+{% endcomment %}
 
 {% extends 'base.html'%}
 {% block content %}
 
-   <!-- sorts food dairy by date and shows date -->
-    {% comment %} <div class="row">
-        <div class="col-3">
-          <form action="{% url 'journal' %}" method="POST">
-            {% csrf_token %}
-            <label for="date_entered" class="form-label">Date: {{today}}</label>
-            <input type="date" class="form-control" id="date_entered" name="date_entered" onchange="this.form.submit()">
-          </form>
-        </div>
-    </div> {% endcomment %}
     <header class="section-header">
       <h2>Workout List</h2>
       <p>Dashboard</p>
     </header>
-      {% comment %} {% for personWorkout in person_workout %}
-        <p>Workout_name: {{personWorkout.workout}}</p>
-        <p>Muscle Group: {{personWorkout.workout.category}}</p>
-        <p>Workout ID: {{personWorkout.person_workout}}</p>
-      {% for workout_data in person_workout_data %}
-        {% if personWorkout.person_workout == workout_data.person_workout %}
-        <p>Number of sets: {{workout_data.num_sets}}</p>
-        <p>Number of reps: {{workout_data.num_reps}}</p>
-        <p>Date: {{workout_data.workout_date}}</p>
-        <p>ID: {{workout_data.person_workout}}</p>
-        <br>
-        {% endif %}
-    {% endfor %}
-    {% endfor %} {% endcomment %}
     {% for category in workout_cat %}
     
         <div class="row mb-0 mx-auto">
