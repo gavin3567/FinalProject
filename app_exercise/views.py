@@ -83,8 +83,7 @@ def workoutSelection(request):
         person_workout.save()
  
   
-    return render(request, 'app_exercise/dashboard.html')
-
+    return redirect('/dashboard/')
 @login_required 
 def dashboardPageView(request):
     # How do I make sure the person logged in will get the information they need?
