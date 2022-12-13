@@ -58,12 +58,14 @@
 
     <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div class="col-lg-12 d-flex justify-content-center">
-        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-          <form method="GET" action="{% url 'search-workout' %}">
+        <form method="GET" action="{% url 'search-workout' %}">
+          <div class="input-group">
             <input style="height:50px; width:200px;" class="form-control me-2" class = "center" type="search" placeholder="Search" aria-label="Search" name="search-db">
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
-        </div>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
