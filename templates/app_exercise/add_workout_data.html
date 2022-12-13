@@ -1,12 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%} 
+
 {% comment %} 
 
     This page gets data from the workout table and adds that to the workout name and muscle group.
     The user can add the sets, reps, weight and date which will be added to the Dashboard.
 
 {% endcomment %}
-{% extends 'base.html' %}
-{% load static %}
-{%block content%} 
+
 
 <div class="container" style="background-color: #F6F9FF;">
     <form name = "formdos" method="post" action="{% url 'add' %}">

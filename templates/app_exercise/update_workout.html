@@ -1,12 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%} 
+
 {% comment %} 
 
     This page is for updating workouts from your dashboard
 
 {% endcomment %}
 
-{% extends 'base.html' %}
-{% load static %}
-{%block content%} 
+
     <div class="container" style="background-color: #F6F9FF;">
         <form name = "formdos" method="post" action="{% url 'update-record' %}">
             {% csrf_token %}
