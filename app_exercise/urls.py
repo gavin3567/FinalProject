@@ -13,6 +13,7 @@ from .views import accountCreatedView
 from .views import addWorkoutView
 from .views import addView
 from .views import workoutSelection
+from .views import searchWorkouts
 
 
 urlpatterns = [
@@ -33,4 +34,5 @@ urlpatterns = [
     path("add_workout/<int:id>",addWorkoutView, name='add_workout'),
     path("add/",addView, name='add'),
     path("select-workout/",workoutSelection, name='select-workout'),
+    path("search-db-workout/",searchWorkouts, name="search-workout")
 ]
