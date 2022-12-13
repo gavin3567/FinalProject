@@ -74,11 +74,13 @@
   <table class="center">          
                 <thead>
  <!-- table head -->
-                    <tr>
-                        <th>Body Part</th>
-                    
+                 
+                      <th scope="col">Body Parts</th>
+                     
                         {% for entry in workout %}
+                        <tr>
                         <th scope="col">{{entry.category|capfirst}}</th>
+                        </tr>
                         {% for entry in workout %}
                   
                         <tr>
@@ -91,7 +93,7 @@
 
                         {% endfor %}
                        
-                    </tr>
+               
                 </thead>
  <!-- table body -->
 
